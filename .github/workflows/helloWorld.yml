@@ -2,10 +2,15 @@ name: Hello World Training Workflow
 
 on:
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name to say hello to'
+        required: false
+        default: 'World'
 
 jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
       - name: Greet the User
-        run: echo "Hello World!"
+        run: echo "Hello ${{ github.event.inputs.name }}!"
